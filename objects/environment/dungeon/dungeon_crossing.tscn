@@ -15,9 +15,8 @@ extents = Vector3( 1, 0.1, 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.73425, 0 )
 shape = SubResource( 1 )
 
-[node name="disabled" type="Node" parent="."]
-
-[node name="floor" type="CollisionShape" parent="disabled"]
+[node name="floor" type="CollisionShape" parent="StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0 )
 shape = SubResource( 1 )
-disabled = true
+
+[node name="disabled" type="Node" parent="."]

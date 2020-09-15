@@ -7,7 +7,10 @@ extends KinematicBody
 
 export (float) var min_speak_time = 5
 export (float) var max_speak_time = 30
-export (Vector3) var spin_speed = Vector3(0.5, 1, 2)
+export (Vector3) var spin_variance_speed = Vector3(0.001, 0.002, 0.003)
+export var spin_damping = 0.15
+
+var noise = OpenSimplexNoise.new()
 
 var speak_time
 
@@ -29,9 +32,12 @@ func _process(delta):
 		reset_speak_time()
 		$sound.play()
 
-	$umbral_sprite_model.rotate_x(spin_speed.x)
-	$umbral_sprite_model.rotate_y(spin_speed.y)
-	$umbral_sprite_model.rotate_z(spin_speed.z)
+	var spin_x = noise.get_noise_1d(OS.get_ticks_msec() * spin_variance_speed.x) * spin_damping
+	var spin_y = noise.get_noise_1d(OS.get_ticks_msec() * spin_variance_speed.y) * spin_damping
+	var spin_z = noise.get_noise_1d(OS.get_ticks_msec() * spin_variance_speed.z) * spin_damping
+	$umbral_sprite_model.rotate_x(spin_x)
+	$umbral_sprite_model.rotate_y(spin_y)
+	$umbral_sprite_model.rotate_z(spin_z)
 
 func reset_speak_time():
 	speak_time = rng.randf_range(min_speak_time, max_speak_time)

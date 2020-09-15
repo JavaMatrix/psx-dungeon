@@ -52,9 +52,8 @@ transform = Transform( -0.5, 0.866025, 0, -0.866025, -0.5, 0, 0, 0, 1, -0.58762,
 visible = false
 shape = SubResource( 1 )
 
-[node name="disabled" type="Node" parent="."]
-
-[node name="floor_collider" type="CollisionShape" parent="disabled"]
+[node name="floor" type="CollisionShape" parent="StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.1, 0 )
 shape = SubResource( 3 )
-disabled = true
+
+[node name="disabled" type="Node" parent="."]
