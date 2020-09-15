@@ -1,0 +1,577 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://objects/mobs/umbral-sprite/umbral-sprite.tscn" type="PackedScene" id=1]
+[ext_resource path="res://levels/main.gd" type="Script" id=2]
+[ext_resource path="res://objects/mobs/player/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/environment/dungeon/dungeon_tee.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/environment/dungeon/dungeon_corridor.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/environment/dungeon/dungeon_dead_end_s.tscn" type="PackedScene" id=6]
+[ext_resource path="res://objects/environment/dungeon/dungeon_turn.tscn" type="PackedScene" id=7]
+[ext_resource path="res://objects/environment/dungeon/dungeon_dead_end_n.tscn" type="PackedScene" id=8]
+[ext_resource path="res://objects/environment/dungeon/dungeon_crossing.tscn" type="PackedScene" id=9]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 100, 0.1, 100 )
+
+[node name="level" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="mobs" type="Node" parent="."]
+
+[node name="player" parent="mobs" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.02714, 0 )
+move_speed = 2.0
+sprint_speed = 3.0
+jump_power = 5.0
+
+[node name="environment" type="Node" parent="."]
+
+[node name="dungeon_dead_end_s" parent="environment" instance=ExtResource( 6 )]
+
+[node name="dungeon_tee" parent="environment" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+
+[node name="dungeon_corridor" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 0, -2 )
+
+[node name="dungeon_corridor2" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, -2 )
+
+[node name="dungeon_corridor7" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7, 0, -10 )
+
+[node name="dungeon_corridor55" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 0, -14 )
+
+[node name="dungeon_corridor60" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10, 0, -14 )
+
+[node name="dungeon_corridor61" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12, 0, -14 )
+
+[node name="dungeon_corridor66" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 15, 0, -22 )
+
+[node name="dungeon_corridor69" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 18, 0, -18 )
+
+[node name="dungeon_corridor71" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 22, 0, -18 )
+
+[node name="dungeon_corridor77" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 22, 0, -2 )
+
+[node name="dungeon_corridor80" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 23, 0, -6 )
+
+[node name="dungeon_corridor81" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 25, 0, -6 )
+
+[node name="dungeon_corridor82" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 27, 0, -6 )
+
+[node name="dungeon_corridor83" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 29, 0, -6 )
+
+[node name="dungeon_corridor87" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 33, 0, -10 )
+
+[node name="dungeon_corridor88" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 31, 0, -10 )
+
+[node name="dungeon_corridor89" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 29, 0, -10 )
+
+[node name="dungeon_corridor90" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 27, 0, -10 )
+
+[node name="dungeon_corridor91" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 27, 0, -14 )
+
+[node name="dungeon_corridor92" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 29, 0, -14 )
+
+[node name="dungeon_corridor78" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 24, 0, -2 )
+
+[node name="dungeon_corridor72" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 24, 0, -18 )
+
+[node name="dungeon_corridor100" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 31, 0, -26.001 )
+
+[node name="dungeon_corridor101" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 33, 0, -26 )
+
+[node name="dungeon_corridor73" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 26, 0, -18 )
+
+[node name="dungeon_corridor67" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17, 0, -22 )
+
+[node name="dungeon_corridor30" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7, 0, -30 )
+
+[node name="dungeon_corridor31" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9, 0, -30 )
+
+[node name="dungeon_corridor39" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17, 0, -38 )
+
+[node name="dungeon_corridor56" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 15, 0, -38 )
+
+[node name="dungeon_corridor41" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, -34 )
+
+[node name="dungeon_corridor42" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 0, -34 )
+
+[node name="dungeon_corridor44" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 0, -38 )
+
+[node name="dungeon_corridor32" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -0.5, 0, 1, 0, 1, 0, -2.18557e-08, 10.5, 0, -30 )
+
+[node name="dungeon_corridor76" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -0.5, 0, 1, 0, 1, 0, -2.18557e-08, 18.5, 0, -2 )
+
+[node name="dungeon_corridor79" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -0.5, 0, 1, 0, 1, 0, -2.18557e-08, 25.5, 0, -1.933 )
+
+[node name="dungeon_corridor110" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -0.5, 0, 1, 0, 1, 0, -2.18557e-08, 26.5, 0, -29.933 )
+
+[node name="dungeon_corridor59" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13, 0, -26 )
+
+[node name="dungeon_corridor9" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9, 0, -10 )
+
+[node name="dungeon_turn" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -3 )
+
+[node name="dungeon_turn12" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -15 )
+
+[node name="dungeon_turn7" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -19 )
+
+[node name="dungeon_corridor10" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -7 )
+
+[node name="dungeon_corridor12" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -7 )
+
+[node name="dungeon_corridor13" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -5 )
+
+[node name="dungeon_corridor20" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -8 )
+
+[node name="dungeon_corridor11" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -5 )
+
+[node name="dungeon_corridor14" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.5, 12, 0, -3.5 )
+
+[node name="dungeon_corridor19" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.5, 20, 0, -4.5 )
+
+[node name="dungeon_corridor21" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.5, 36, 0, -6.5 )
+
+[node name="dungeon_corridor96" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.5, 36, 0, -27.5 )
+
+[node name="dungeon_corridor93" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.5, 32, 0, -16.5 )
+
+[node name="dungeon_corridor103" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.5, 36, 0, -24.5 )
+
+[node name="dungeon_corridor24" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.5, 36, 0, -6.5 )
+
+[node name="dungeon_corridor54" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.5, 8, 0, -16.5 )
+
+[node name="dungeon_corridor57" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, -11.5 )
+
+[node name="dungeon_turn2" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7, 0, -6 )
+
+[node name="dungeon_turn5" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11, 0, -10 )
+
+[node name="dungeon_turn22" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 31, 0, -6 )
+
+[node name="dungeon_turn30" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 23, 0, -26 )
+
+[node name="dungeon_turn34" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 35, 0, -30 )
+
+[node name="dungeon_turn16" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19, 0, -30 )
+
+[node name="dungeon_turn20" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19, 0, -38 )
+
+[node name="dungeon_turn3" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, -6 )
+
+[node name="dungeon_turn21" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17, 0, -2 )
+
+[node name="dungeon_turn26" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 25, 0, -10 )
+
+[node name="umbral_sprite" parent="environment/dungeon_turn26" instance=ExtResource( 1 )]
+
+[node name="dungeon_turn31" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 25, 0, -22 )
+
+[node name="dungeon_turn35" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 33, 0, -30 )
+
+[node name="dungeon_turn24" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17, 0, -2 )
+
+[node name="dungeon_turn23" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 33, 0, -2 )
+
+[node name="dungeon_turn17" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17, 0, -30 )
+
+[node name="dungeon_turn38" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 25, 0, -30 )
+
+[node name="dungeon_turn13" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13, 0, -18 )
+
+[node name="dungeon_turn19" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 20, 0, -35 )
+
+[node name="dungeon_turn25" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 36, 0, -3 )
+
+[node name="dungeon_turn32" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 28, 0, -23 )
+
+[node name="dungeon_turn37" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 28, 0, -35 )
+
+[node name="dungeon_turn28" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 32, 0, -15 )
+
+[node name="dungeon_turn29" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 36, 0, -19 )
+
+[node name="dungeon_corridor15" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4 )
+
+[node name="dungeon_corridor16" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6 )
+
+[node name="dungeon_corridor17" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8 )
+
+[node name="dungeon_corridor18" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
+
+[node name="dungeon_corridor22" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13 )
+
+[node name="dungeon_corridor23" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15 )
+
+[node name="dungeon_corridor25" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -21 )
+
+[node name="dungeon_corridor26" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -20 )
+
+[node name="umbral_sprite" parent="environment/dungeon_corridor26" instance=ExtResource( 1 )]
+
+[node name="dungeon_corridor94" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, -20 )
+
+[node name="dungeon_corridor95" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0, -21 )
+
+[node name="dungeon_corridor102" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0, -23 )
+
+[node name="dungeon_corridor107" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0, -40 )
+
+[node name="dungeon_corridor104" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, -33 )
+
+[node name="dungeon_corridor108" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -36 )
+
+[node name="dungeon_corridor105" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, -35 )
+
+[node name="dungeon_corridor106" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0, -36 )
+
+[node name="dungeon_corridor29" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -16 )
+
+[node name="dungeon_corridor74" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -14 )
+
+[node name="dungeon_corridor75" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -12 )
+
+[node name="dungeon_corridor84" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0, -5 )
+
+[node name="dungeon_corridor86" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0, -12 )
+
+[node name="dungeon_corridor85" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0, -8 )
+
+[node name="dungeon_corridor50" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -22 )
+
+[node name="dungeon_corridor51" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -24 )
+
+[node name="dungeon_corridor52" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -20 )
+
+[node name="dungeon_corridor53" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -18 )
+
+[node name="dungeon_corridor45" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -32 )
+
+[node name="dungeon_corridor46" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -30 )
+
+[node name="dungeon_corridor47" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -28 )
+
+[node name="umbral_sprite" parent="environment/dungeon_corridor47" instance=ExtResource( 1 )]
+
+[node name="dungeon_corridor48" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -26 )
+
+[node name="dungeon_corridor49" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24 )
+
+[node name="dungeon_corridor35" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -32 )
+
+[node name="dungeon_corridor36" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -34 )
+
+[node name="dungeon_corridor27" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -24 )
+
+[node name="dungeon_corridor28" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.5, 4, 0, -27.5 )
+
+[node name="dungeon_corridor43" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, -35.5 )
+
+[node name="dungeon_corridor65" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.5, 8, 0, -23.5 )
+
+[node name="dungeon_corridor68" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.5, 4, 0, -22.5 )
+
+[node name="dungeon_corridor70" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.5, 20, 0, -27.5 )
+
+[node name="dungeon_corridor37" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.5, 13, 0, -35.5 )
+
+[node name="dungeon_corridor109" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.5, 24, 0, -32.5 )
+
+[node name="umbral_sprite" parent="environment/dungeon_corridor109" instance=ExtResource( 1 )]
+
+[node name="dungeon_corridor34" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -0.5, 0, 1, 0, 1, 0, -2.18557e-08, 10.5, 0, -26 )
+
+[node name="dungeon_corridor63" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -0.5, 0, 1, 0, 1, 0, -2.18557e-08, 6.5, 0, -26 )
+
+[node name="dungeon_corridor40" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -0.5, 0, 1, 0, 1, 0, -2.18557e-08, 6.5, 0, -34 )
+
+[node name="dungeon_corridor58" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -0.5, 0, 1, 0, 1, 0, -2.18557e-08, 9.5, 0, -26 )
+
+[node name="dungeon_corridor62" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -0.5, 0, 1, 0, 1, 0, -2.18557e-08, 13.4977, 1.90735e-06, -14.0482 )
+
+[node name="dungeon_corridor64" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -0.5, 0, 1, 0, 1, 0, -2.18557e-08, 14.4977, 1.90735e-06, -18.0482 )
+
+[node name="dungeon_corridor38" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -0.5, 0, 1, 0, 1, 0, -2.18557e-08, 11.5, 0, -38 )
+
+[node name="dungeon_corridor99" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -0.5, 0, 1, 0, 1, 0, -2.18557e-08, 14.5, 0, -26 )
+
+[node name="dungeon_corridor97" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -0.5, 0, 1, 0, 1, 0, -2.18557e-08, 33.5, 0, -38 )
+
+[node name="umbral_sprite" parent="environment/dungeon_corridor97" instance=ExtResource( 1 )]
+
+[node name="dungeon_corridor98" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -0.5, 0, 1, 0, 1, 0, -2.18557e-08, 30.5, 0, -38 )
+
+[node name="dungeon_corridor33" parent="environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -28 )
+
+[node name="dungeon_turn4" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0, -9 )
+
+[node name="dungeon_turn8" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0, -29 )
+
+[node name="dungeon_turn9" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9, 0, -37 )
+
+[node name="dungeon_turn11" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -37 )
+
+[node name="dungeon_turn18" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16, 0, -33 )
+
+[node name="dungeon_turn36" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 28, 0, -37 )
+
+[node name="dungeon_turn14" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 12, 0, -21 )
+
+[node name="dungeon_turn15" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16, 0, -9 )
+
+[node name="dungeon_turn33" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 28, 0, -25 )
+
+[node name="dungeon_turn27" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 24, 0, -13 )
+
+[node name="dungeon_turn10" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 9, 0, -35 )
+
+[node name="dungeon_turn6" parent="environment" instance=ExtResource( 7 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.76837e-07, 0, -17 )
+
+[node name="dungeon_dead_end_s2" parent="environment" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -2 )
+
+[node name="umbral_sprite" parent="environment/dungeon_dead_end_s2" instance=ExtResource( 1 )]
+
+[node name="dungeon_dead_end_s5" parent="environment" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 28, 0, -18 )
+
+[node name="dungeon_dead_end_s7" parent="environment" instance=ExtResource( 6 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 36, 0, -14 )
+
+[node name="dungeon_dead_end_s9" parent="environment" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 36, 0, -34 )
+
+[node name="dungeon_dead_end_s11" parent="environment" instance=ExtResource( 6 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 28, 0, -30 )
+
+[node name="dungeon_dead_end_s10" parent="environment" instance=ExtResource( 6 )]
+transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 24, 0, -38 )
+
+[node name="dungeon_dead_end_s8" parent="environment" instance=ExtResource( 6 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 32, 0, -22 )
+
+[node name="dungeon_dead_end_s6" parent="environment" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 27, 0, -2 )
+
+[node name="dungeon_dead_end_s12" parent="environment" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16, 0, -26 )
+
+[node name="dungeon_dead_end_s3" parent="environment" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 0, -14 )
+
+[node name="dungeon_tee2" parent="environment" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -26 )
+
+[node name="dungeon_tee7" parent="environment" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -34 )
+
+[node name="dungeon_tee4" parent="environment" instance=ExtResource( 4 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13, 0, -30 )
+
+[node name="dungeon_tee6" parent="environment" instance=ExtResource( 4 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 13, 0, -38 )
+
+[node name="dungeon_tee5" parent="environment" instance=ExtResource( 4 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13, 0, -26 )
+
+[node name="dungeon_tee3" parent="environment" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, 0, -26 )
+
+[node name="dungeon_tee10" parent="environment" instance=ExtResource( 4 )]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 20, 0, -22 )
+
+[node name="dungeon_dead_end_n" parent="environment" instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, -38 )
+
+[node name="dungeon_dead_end_n2" parent="environment" instance=ExtResource( 8 )]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -22 )
+
+[node name="dungeon_tee8" parent="environment" instance=ExtResource( 4 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 8, 0, -14 )
+
+[node name="dungeon_tee9" parent="environment" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16, 0, -18 )
+
+[node name="dungeon_tee12" parent="environment" instance=ExtResource( 4 )]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 20, 0, -10 )
+
+[node name="dungeon_tee13" parent="environment" instance=ExtResource( 4 )]
+transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 20, 0, -2 )
+
+[node name="dungeon_tee14" parent="environment" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -6 )
+
+[node name="dungeon_tee15" parent="environment" instance=ExtResource( 4 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 36, 0, -10 )
+
+[node name="dungeon_tee17" parent="environment" instance=ExtResource( 4 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 36, 0, -26 )
+
+[node name="dungeon_tee16" parent="environment" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 32, 0, -18 )
+
+[node name="dungeon_tee18" parent="environment" instance=ExtResource( 4 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 32, 0, -38 )
+
+[node name="dungeon_tee19" parent="environment" instance=ExtResource( 4 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 36, 0, -38 )
+
+[node name="dungeon_tee20" parent="environment" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 24, 0, -34 )
+
+[node name="dungeon_tee11" parent="environment" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -26 )
+
+[node name="dungeon_crossing" parent="environment" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -18 )
+
+[node name="special" type="Node" parent="."]
+
+[node name="floor" type="StaticBody" parent="special"]
+
+[node name="CollisionShape" type="CollisionShape" parent="special/floor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0 )
+shape = SubResource( 1 )

@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://levels/main.gd" type="Script" id=1]
+[ext_resource path="res://objects/environment/dungeon/dungeon_dead_end_s.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/environment/dungeon/dungeon_tee.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/mobs/player/player.tscn" type="PackedScene" id=4]
+
+[node name="test_scene" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="mobs" type="Node" parent="."]
+
+[node name="player" parent="mobs" instance=ExtResource( 4 )]
+transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 0, 1, 0 )
+move_speed = 0.3
+
+[node name="environment" type="Node" parent="."]
+
+[node name="dungeon_tee" parent="environment" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+
+[node name="dungeon_dead_end_s" parent="environment" instance=ExtResource( 2 )]
