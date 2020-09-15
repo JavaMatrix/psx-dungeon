@@ -20,7 +20,7 @@ script = ExtResource( 2 )
 
 [node name="player" parent="mobs" instance=ExtResource( 3 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.02714, 0 )
-move_speed = 2.0
+move_speed = 0.5
 sprint_speed = 3.0
 jump_power = 5.0
 

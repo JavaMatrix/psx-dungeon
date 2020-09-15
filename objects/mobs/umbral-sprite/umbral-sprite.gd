@@ -5,8 +5,8 @@ extends KinematicBody
 # var a = 2
 # var b = "text"
 
-export (float) var min_speak_time = 5
-export (float) var max_speak_time = 30
+export (float) var min_speak_time = 30
+export (float) var max_speak_time = 90
 export (Vector3) var spin_variance_speed = Vector3(0.001, 0.002, 0.003)
 export var spin_damping = 0.15
 
@@ -18,6 +18,7 @@ var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	rng.randomize()
 	var pitch = rng.randf_range(0.8, 1.2)
 	$sound.pitch_scale = pitch
 	$ambient.pitch_scale = pitch
@@ -27,7 +28,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	speak_time -= delta
-	print(speak_time)
 	if (speak_time <= 0 && !$sound.playing):
 		reset_speak_time()
 		$sound.play()
