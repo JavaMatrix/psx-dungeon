@@ -32,6 +32,7 @@ const DEATH_FALL_TIME = 5
 export (float) var move_speed = 3
 export (float) var sprint_speed = 5
 export (float) var jump_power = 7
+export (bool) var bobbing_enabled = true
 
 
 # Called when the node enters the scene tree for the first time.
@@ -98,7 +99,7 @@ func _process(delta):
 		last_mouse_movement = null
 
 	var target_camera_height = .9
-	if (moving && is_on_floor):
+	if (moving && is_on_floor && bobbing_enabled):
 		var bob_speed
 		if (sprinting):
 			bob_speed = (sprint_speed / 3.0) * (1.0 / 100000.0)

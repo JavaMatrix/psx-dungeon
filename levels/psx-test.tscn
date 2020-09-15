@@ -23,6 +23,7 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.02
 move_speed = 0.5
 sprint_speed = 3.0
 jump_power = 5.0
+bobbing_enabled = false
 
 [node name="environment" type="Node" parent="."]
 
