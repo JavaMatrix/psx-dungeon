@@ -1,0 +1,7 @@
+inferior
+minor
+-
+greater
+major
+superior
+supreme

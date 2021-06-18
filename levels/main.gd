@@ -11,6 +11,9 @@ func _ready():
 #	OS.window_borderless = true
 #	OS.set_window_maximized(true)
 	OS.window_fullscreen = true
+	var current_size = OS.get_window_size()
+	var ratio = current_size.x / current_size.y
+	$ViewportContainer.set_size(Vector2(240 * ratio, 240))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

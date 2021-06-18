@@ -1,14 +1,17 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://objects/mobs/player/player.gd" type="Script" id=1]
 [ext_resource path="res://objects/items/swords/sword1/sword-1.tscn" type="PackedScene" id=2]
-[ext_resource path="res://resources/dark_env.tres" type="Environment" id=3]
-[ext_resource path="res://models/scenes/sword1_model.tscn" type="PackedScene" id=4]
+[ext_resource path="res://resources/default_env.tres" type="Environment" id=3]
+[ext_resource path="res://objects/items/swords/sword.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/items/torches/torch.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sfx/player/footstep_1.wav" type="AudioStream" id=6]
+[ext_resource path="res://resources/dark_env.tres" type="Environment" id=7]
 
-[sub_resource type="CapsuleShape" id=1]
+[sub_resource type="CylinderShape" id=1]
 margin = 0.001
 radius = 0.25
+height = 1.5
 
 [sub_resource type="CylinderMesh" id=2]
 top_radius = 0.5
@@ -20,11 +23,12 @@ margin = 0.001
 
 [node name="player" type="Spatial"]
 script = ExtResource( 1 )
+runtime_env = ExtResource( 7 )
 
 [node name="KinematicBody" type="KinematicBody" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="KinematicBody"]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0 )
 shape = SubResource( 1 )
 
 [node name="Camera" type="Camera" parent="KinematicBody"]
@@ -33,9 +37,9 @@ current = true
 size = 2.75244
 near = 0.01
 
-[node name="Sword" parent="KinematicBody/Camera" instance=ExtResource( 2 )]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.499999, 0, -0.6, -0.55 )
-model_pack = ExtResource( 4 )
+[node name="sword" parent="KinematicBody/Camera" instance=ExtResource( 4 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.6, -0.55 )
+model_pack = ExtResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="KinematicBody"]
 visible = false
@@ -50,10 +54,16 @@ average_energy = 0.6
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 shape = SubResource( 3 )
 
+[node name="footsteps" type="AudioStreamPlayer3D" parent="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.9, -0.25 )
+stream = ExtResource( 6 )
+attenuation_model = 3
+
 [node name="Label" type="Label" parent="."]
-visible = false
-margin_right = 40.0
+anchor_left = 0.65
+anchor_right = 1.0
 margin_bottom = 14.0
+align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }

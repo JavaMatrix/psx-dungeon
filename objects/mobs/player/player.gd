@@ -13,7 +13,8 @@ var speed
 
 var vert_speed = 0
 
-var is_on_floor
+var is_on_floor_coyote
+var time_on_floor_coyote
 
 var coyote_time = 0.2
 
@@ -21,11 +22,11 @@ var fall_time = 0
 
 const MAX_VERT_SPEED = 10
 
-const GRAVITY_UP = 10
-const GRAVITY_DOWN = 15
+const GRAVITY_UP = 20
+const GRAVITY_DOWN = 30
 
-const SENSITIVITY_X = -0.03
-const SENSITIVITY_Y = -0.03
+const SENSITIVITY_X = -0.02
+const SENSITIVITY_Y = -0.02
 
 const DEATH_FALL_TIME = 5
 
@@ -34,10 +35,21 @@ export (float) var sprint_speed = 5
 export (float) var jump_power = 7
 export (bool) var bobbing_enabled = true
 
+export (Environment) var runtime_env
+
+var moon_jump = false
+var actual_vert_move
+
+var trigger_fs = true
+
+var rng = RandomNumberGenerator.new()
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	rng.randomize()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	$WorldEnvironment.environment = runtime_env
 
 
 func _input(event):
@@ -51,21 +63,6 @@ func _input(event):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var gravity
-	if (vert_speed > 0):
-		gravity = GRAVITY_UP
-	else:
-		gravity = GRAVITY_DOWN
-
-	vert_speed -= gravity * delta
-
-	if (vert_speed < -MAX_VERT_SPEED):
-		vert_speed = -MAX_VERT_SPEED
-
-	if ($KinematicBody.is_on_floor() && vert_speed < 0):
-		vert_speed = 0
-	var vert_movement = Vector3(0, vert_speed, 0)
-	$KinematicBody.move_and_slide(vert_movement)
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		look_enabled = false
@@ -75,7 +72,6 @@ func _process(delta):
 
 	if Input.is_action_just_pressed("ui_scroll_up"):
 		$WorldEnvironment.environment.ambient_light_energy += 0.1
-		print ("light_up")
 
 	if Input.is_action_just_pressed("ui_scroll_down"):
 		$WorldEnvironment.environment.ambient_light_energy -= 0.1
@@ -86,10 +82,10 @@ func _process(delta):
 		$KinematicBody/Camera.fov = 70
 
 
-	if (Input.is_action_pressed("ctl_jump") && is_on_floor):
+	if (Input.is_action_pressed("ctl_jump") && (is_on_floor_coyote || can_moon_jump())):
 		vert_speed = jump_power
 
-	if (last_mouse_movement != null && look_enabled):
+	if (last_mouse_movement != null && look_enabled && !Input.is_action_pressed("sw_activate")):
 		$KinematicBody.rotate_y(last_mouse_movement.x * SENSITIVITY_X)
 		$KinematicBody/Camera.rotate_x(last_mouse_movement.y * SENSITIVITY_Y)
 		if $KinematicBody/Camera.rotation.x > PI / 2:
@@ -99,13 +95,21 @@ func _process(delta):
 		last_mouse_movement = null
 
 	var target_camera_height = .9
-	if (moving && is_on_floor && bobbing_enabled):
+	if (moving && is_on_floor_coyote && bobbing_enabled):
 		var bob_speed
 		if (sprinting):
-			bob_speed = (sprint_speed / 3.0) * (1.0 / 100000.0)
+			bob_speed = (sprint_speed / 3.0) * (1.5 / 100000.0)
 		else:
-			bob_speed = (move_speed / 3.0) * (1.0 / 100000.0)
+			bob_speed = (move_speed / 3.0) * (1.5 / 100000.0)
 		target_camera_height = .9 + sin(OS.get_ticks_usec() * bob_speed) * 0.05
+
+	if (target_camera_height < 0.855):
+		if (trigger_fs  && !$KinematicBody/footsteps.playing):
+			play_footstep()
+			trigger_fs = false
+	else:
+		trigger_fs = true
+
 	var cam_move_speed = 0.5 * delta
 	if ($KinematicBody/Camera.transform.origin.y < target_camera_height):
 		if (target_camera_height - $KinematicBody/Camera.transform.origin.y < cam_move_speed):
@@ -120,6 +124,11 @@ func _process(delta):
 
 func _physics_process(delta):
 
+	if (is_on_floor_coyote):
+		time_on_floor_coyote += delta
+	else:
+		time_on_floor_coyote = 0
+
 	var gravity
 	if (vert_speed > 0):
 		gravity = GRAVITY_UP
@@ -131,32 +140,34 @@ func _physics_process(delta):
 	if (vert_speed < -MAX_VERT_SPEED):
 		vert_speed = -MAX_VERT_SPEED
 
-	if ($KinematicBody.is_on_floor() && vert_speed < 0):
-		vert_speed = 0
-	var vert_movement = Vector3(0, vert_speed, 0)
-	var actual_vert_move = $KinematicBody.move_and_slide(vert_movement).y
+	var v_move = vert_speed
+	if (is_on_floor_coyote && vert_speed < 0):
+		v_move = 0
+
+	var vert_movement = Vector3(0, v_move, 0)
+	actual_vert_move = $KinematicBody.move_and_slide(vert_movement, Vector3.UP).y
 
 	if (abs(actual_vert_move) < 0.001):
 		actual_vert_move = 0
 
 	if (vert_speed < -0.1 && actual_vert_move == 0):
 		fall_time = 0
-		is_on_floor = true
+		is_on_floor_coyote = true
 		coyote_time = 0.2
 	else:
 		if (vert_speed < 0):
 			coyote_time -= delta
 			if (coyote_time < 0):
-				is_on_floor = false
+				is_on_floor_coyote = false
 			else:
-				is_on_floor = true
+				is_on_floor_coyote = true
 			fall_time += delta
-			if (fall_time > DEATH_FALL_TIME):
+			if (fall_time > DEATH_FALL_TIME && !moon_jump):
 				get_tree().reload_current_scene()
 		else:
 			fall_time = 0
 			coyote_time = 0
-			is_on_floor = false
+			is_on_floor_coyote = false
 
 	if (vert_speed > 0 && actual_vert_move == 0):
 		# we hit a ceiling
@@ -186,5 +197,20 @@ func _physics_process(delta):
 	movement = movement.rotated(Vector3(0,1,0), $KinematicBody.rotation.y)
 	$KinematicBody.move_and_collide(movement * delta)
 
+	var label_str ="(%.1f, %.1f, %.1f)"
+	var t = $KinematicBody.global_transform.origin
+	label_str = label_str % [t.x, t.y, t.z]
+	$Label.text = label_str
 
-	$Label.text = str(Engine.get_frames_per_second())
+func play_footstep():
+	var fsp = $KinematicBody/footsteps
+	if (fsp.translation.x == -0.1):
+		fsp.translation.x = 0.1
+	else:
+		fsp.translation.x = -0.1
+	var fpv = 1.2
+	fsp.pitch_scale = rng.randf_range(1/fpv, fpv)
+	fsp.play()
+
+func can_moon_jump():
+	return moon_jump && actual_vert_move <= 0
